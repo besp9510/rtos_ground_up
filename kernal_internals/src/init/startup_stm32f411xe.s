@@ -137,7 +137,7 @@ g_pfnVectors:
   .word  DebugMon_Handler
   .word  0
   .word  PendSV_Handler
-  .word  SysTick_Handler
+  .word  systick_isr
   
   /* External Interrupts */
   .word     WWDG_IRQHandler                   /* Window WatchDog              */                                        
@@ -258,8 +258,8 @@ g_pfnVectors:
    .weak      PendSV_Handler
    .thumb_set PendSV_Handler,Default_Handler
 
-   .weak      SysTick_Handler
-   .thumb_set SysTick_Handler,Default_Handler              
+   .weak      systick_isr
+   .thumb_set systick_isr,Default_Handler              
   
    .weak      WWDG_IRQHandler                   
    .thumb_set WWDG_IRQHandler,Default_Handler      

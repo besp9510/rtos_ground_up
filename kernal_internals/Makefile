@@ -34,7 +34,7 @@ C_DEFS    := -DSTM32F411xE
 LIB :=
 
 # Compile and link flags:
-CFLAGS  := $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -fdata-sections -ffunction-sections -Og
+CFLAGS  := $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -g -fdata-sections -ffunction-sections -Og
 LDFLAGS := -specs=nosys.specs -TSTM32F411VETx_FLASH.ld $(MCU)
 
 # Include paths:
