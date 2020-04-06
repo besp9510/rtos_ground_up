@@ -2,6 +2,8 @@
 
 This repository contains my individual work for the **[Build Your Own RealTime OS (RTOS) From Ground Up™ on ARM 1](https://www.udemy.com/course/rtos-building-from-ground-up-on-arm-processors/)** Udemy class created and taught by Israel Gbati.
 
+![cortex.png](./cortex.png)
+
 ## Overview
 
 The objective of this online class is the build Your Own RealTime Operating Systems from first principles on a STM32 discovery board. From the course description:
