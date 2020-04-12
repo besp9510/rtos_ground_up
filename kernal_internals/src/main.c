@@ -7,12 +7,6 @@
 #define BLUE_SET   (1 << 15)
 #define ORANGE_SET (1 << 13)
 
-// Clear GPIO LEDs:
-#define RED_CLEAR    (0 << 14)
-#define GREEN_CLEAR  (0 << 12)
-#define BLUE_CLEAR   (0 << 15)
-#define ORANGE_CLEAR (0 << 13)
-
 // Output GPIO LEDs:
 #define RED_OUTPUT    (1 << 28)
 #define GREEN_OUTPUT  (1 << 24)
@@ -22,14 +16,14 @@
 // Enable GPIO port D clock output:
 #define GPIOD_CLK_ENABLE (1 << 3)
 
-// Number of elapsed ticks:
-volatile uint32_t tick;
+// Number of elapsed seconds:
+volatile uint32_t seconds;
 
 // Create interrupt service routine to count elapsed ticks
 // (further interrupts are disabled automatically)
 void systick_isr(void) {
     // Count elapsed tick:
-    ++tick;
+    ++seconds;
 }
 
 // Get elapsed ticks
@@ -38,9 +32,9 @@ uint32_t get_tick(void) {
     __disable_irq();
 
     // Get elapsed ticks:
-    // (requires systick ISR to be disabled; ensures the tick remains static
-    // while value is being copied)
-    uint32_t temp = tick;
+    // (requires systick ISR to be disabled; ensures tick remains static
+    // while its value is copied)
+    uint32_t temp = seconds;
 
     // Re-enable:
     __enable_irq();
@@ -62,7 +56,7 @@ void gpio_init(void) {
     // (clock is in MHz)
     SystemCoreClockUpdate();
 
-    // Configure system tick to delay at clock frequency in seconds:
+    // Configure system tick to interrupt every 1 second:
     // (Delay [s] = Ticks / Clock Frequency [1/s])
     SysTick_Config(SystemCoreClock);
 
