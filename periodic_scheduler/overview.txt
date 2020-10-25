@@ -1,0 +1,12 @@
+There are three ways in which a periodic scheduler can be created
+
+1. Create a background thread that periodically calls the period thread (a function).
+   Use a timer and a interrupt service routine to service that timer to work along side
+   the round-robin scheduler to periodically schedule a thread.
+   - Use the systick round-robin scheduler
+   - Create a timer for one periodic thread; the ISR servicing this timer will
+     schedule the periodic thread. This timer is intended to be hardware timer
+     found on the discovery board.
+   - Keep the three threads scheduled
+2. Change the systick round-robin scheduler to schedule the thread periodically
+3. Create a thread control block that considers periodic scheduling

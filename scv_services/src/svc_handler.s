@@ -18,7 +18,7 @@
 .global SVC_Handler_c                   // C handler defined in main.c
 
 // ------------------------------------------------------------------------- //
-// Generic SVC handler
+// SVC handler
 // - Responsible for delivering stack pointer to C handler; MSP or PSP
 //   depending on context prior to SVC exception.
 // Arguments
